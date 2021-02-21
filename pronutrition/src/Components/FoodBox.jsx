@@ -22,11 +22,13 @@ export default class FoodBox extends Component {
     removeFoodFromTodaysList= (event) =>{
       console.log("delete")
       var tempList=[];
+      this.caloriesCount=parseInt(0);
       for(let i=0;i<this.mainList.length;i++)
       {
         if(event.target.value!==this.mainList[i].name)
         {
           tempList.push(this.mainList[i]);
+          this.caloriesCount+=this.mainList[i].cal;
         }
       }
       this.mainList=tempList;
@@ -42,7 +44,7 @@ export default class FoodBox extends Component {
       {
           if(list[i].name===foodName)
           {
-              this.caloriesCount=this.caloriesCount+list[i].cal; //total calories consumed
+              this.caloriesCount=this.caloriesCount+list[i].cal; //total calories eaten
               var nameFoundInMainList=0
               for(let i=0;i<this.mainList.length;i++)
               {
@@ -74,10 +76,6 @@ export default class FoodBox extends Component {
       ReactDOM.render(<p className="todayHeader">Today's Food : {this.caloriesCount} Calories</p>,document.getElementById("todayHeader"))
     }
 
-    // cancelClickHandler = (e) => {
-    //   console.log(e.target.value);
-
-    // }
     
     renderfoodList = ()=> { 
       const data = this.props.foodListSearched;

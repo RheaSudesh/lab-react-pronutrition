@@ -32,6 +32,7 @@ class Search extends React.Component{
     else{
         dataSearched = this.state.foodList;
     }
+
     return (<FoodBox foodListSearched={dataSearched}></FoodBox>);
   }
   
@@ -51,4 +52,5 @@ class Search extends React.Component{
       );
   }
 }
+
 export default Search;
